@@ -14,6 +14,7 @@ font-weight: bold;
 line-height: 22px;
 }
 
+
 /* Layout */
 * {
 box-sizing: border-box;
@@ -34,16 +35,6 @@ left: -20000px;
 }
 
 /* Controls */
-button {
-font-family: inherit;
-font-size: inherit;
-font-weight: inherit;
-line-height: inherit;
-/* Box Styles */
-border: 0;
-border-radius: 3px;
-padding: 11px;
-}
 
 .join {
 background-color: green;
@@ -62,7 +53,9 @@ color: black;
 #call-button {
 cursor: pointer;
 width: 143px; /* 6.5 typographic grid lines */
-margin-right: 11px;
+padding: 10px;
+margin: auto;
+center
 }
 
 /* Video Elements */
@@ -70,6 +63,7 @@ video {
 background-color: #DDD;
 display: block;
 max-width: 100%;
+align: center;
 }
 
 #self {
