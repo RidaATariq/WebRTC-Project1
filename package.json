@@ -1,23 +1,14 @@
 {
   "name": "webrtc-project1",
-  "version": "1.0.0",
-  "description": "For ITMD 469 course, I will build an app that allows students to seek help from an instructor or TA in real time, something like virtual office hours. The app must include both audio and video, and make some worthwhile use of a data channel. ",
-  "main": "app.js",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {},
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "mocha"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RidaATariq/WebRTC-Project1.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/RidaATariq/WebRTC-Project1/issues"
-  },
-  "homepage": "https://github.com/RidaATariq/WebRTC-Project1#readme"
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  }
 }
