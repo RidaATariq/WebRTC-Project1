@@ -36,10 +36,17 @@ const button = document.querySelector('#call');
 //const sc = io( { autoConnect: false} );
 const sc = io(`/${namespace}`, { autoConnect: false} );
 
-button.addEventListener('click', function(){
+button.addEventListener('click', joinCall);
+
+/* DOM */
+function joinCall(){
   console.log("Join Call button pressed");
   sc.open();
-});
+}
+
+function leaveCall(){
+  sc.close();
+}
 
 function registerScEvents() {
 sc.on('connect', handleScConnect);
