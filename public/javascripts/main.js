@@ -37,12 +37,31 @@ const button = document.querySelector('#call');
 const sc = io(`/${namespace}`, { autoConnect: false} );
 
 button.addEventListener('click', function(){
+  console.log("Join Call button pressed");
   sc.open();
 });
-sc.on('connect', function() {
-  console.log('Socket.io instance connected');
-});
 
-sc.on('connected peer', function(){
-  console.log('A peer connected!');
-});
+function registerScEvents() {
+sc.on('connect', handleScConnect);
+sc.on('connected peer', handleScConnectedPeer);
+sc.on('disconnected peer', handleScDisconnectedPeer);
+sc.on('signal', handleScSignal);
+}
+
+registerScEvents();
+
+function handleScConnect() {
+console.log('Successfully connected to the signaling channel!');
+}
+
+function handleScConnectedPeer() {
+  console.log('A peer connected! Event occurred');
+}
+
+function handleScDisconnectedPeer() {
+  console.log('A peer Diconnected! Event occurred');
+}
+
+async function handleScSignal() {
+  console.log('A signal event occurred!');
+}
