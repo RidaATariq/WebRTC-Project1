@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>WebRTC Example: Peer-to-Peer Video Chat</title>
+  <title>Project 1</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no" />
   <link rel="stylesheet" href="stylesheets/screen.css" />
 </head>
 <body>
-  <h1>My Video</h1>
+  <header id="header">
+    <img src="https://universityinnovation.org/images/thumb/a/a7/IIT.png/300px-IIT.png" id="logo">
+    <h1>Welcome to Instructor's Virtual Office Hours</h1>
 
-<video id="self"
-  autoplay
-  muted
-  playsinline>
-</video>
+  </header>
+  <article id="videos">
+    <h2 class="access">Videos</h2>
 
-  <script src="javascripts/main.js"></script>
+    <h2>Self Video</h2>
+    <br>
+    <video id="self"
+      autoplay
+      muted
+      playsinline>
+    </video>
+    <br>
+    <button type="button" class="join" id="call-button">Join Now</button>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="javascripts/main.js"></script>
 </body>
 </html>
