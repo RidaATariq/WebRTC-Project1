@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 const {readFileSync} = require('fs');
-const app = require('../app');
+const { app, io } = require('../app');
 const debug = require('debug')('webrtc-project1:server');
 const https = require('https');
 
@@ -35,7 +35,7 @@ var server = https.createServer(config, app);
  * Listen on provided port, on all network interfaces.
  */
 // Attach socket.io instance to our HTTPS server
-io.attach(server)
+io.attach(server);
 
 // Set up server listen events
 server.listen(port);
