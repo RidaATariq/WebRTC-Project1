@@ -1,13 +1,91 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap");
+/*@import url('//basehold.it/24');*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* stylelint-disable */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}html,.stylelint{line-height:1}body,.stylelint{line-height:inherit}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+/* stylelint-enable */
+
+/* Begin site styles below */
+
+html {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  line-height: 25px;
+  padding: 19px;
+  background: grey;
 }
 
-a {
-  color: #00B7FF;
+#header {
+  padding-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
-video{
-  display: block;
+.access {
+  position: absolute;
+  left: -10000px;
+}
+
+#button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  border: 0;
+  line-height: 1;
+  padding: 15px;
+}
+
+/* style for the button  */
+.join {
+  color: #fff;
+  text-transform: uppercase;
+  background: black;
+  padding: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+}
+
+.leave {
+  color: #fff;
+  text-transform: uppercase;
+  background: #D03D56;
+  padding: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+}
+
+#call-button {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 125px;
+  color: white;
+}
+
+video {
   max-width: 100%;
-},
+  display: block;
+}
+
+#self {
+  width: 50%;
+  border: 5px solid black;
+}
+#peer {
+  width: 75%;
+  border: 5px solid black;
+}
+
+#logo {
+  height: 50px;
+  width: 50px;
+  display: flex;
+}
