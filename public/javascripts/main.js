@@ -104,6 +104,7 @@ async function handleScSignal() {
 /**
 * Utility Functions
 */
+
 function prepareNamespace(hash, set_location) {
 let ns = hash.replace(/^#/, ''); // remove # from the hash
 if (/^[0-9]{6}$/.test(ns)) {

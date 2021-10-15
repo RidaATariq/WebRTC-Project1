@@ -97,21 +97,17 @@ video {
   display: flex;
 }
 
-/* CONTACT PAGE CODE */
 form {
   margin-top:2em;
-  text-align:center;
 }
 
 #contactHeader{
   margin-top: 0px;
-  text-align:center;
 }
 
 #inputArea {
   background-position: 50% 0;
   background-repeat:no-repeat;
-  text-align: center;
   min-height: 350px;
   max-height: 425px;
 }
@@ -142,7 +138,6 @@ form {
   border-radius: 2px;
   padding-left: 3px;
   padding:5px;
-  /*width:300px;*/
   width: 45%;
   height:20px;
 }
@@ -152,7 +147,6 @@ textarea{
   background: rgb(255, 255, 255, 0.8);
   border-radius: 2px;
   padding-left: 3px;
-  /*width: 305px;*/
   width: 45%;
 }
 
