@@ -97,6 +97,78 @@ video {
   display: flex;
 }
 
+/* CONTACT PAGE CODE */
+form {
+  margin-top:2em;
+  text-align:center;
+}
+
+#contactHeader{
+  margin-top: 0px;
+  text-align:center;
+}
+
+#inputArea {
+  background-position: 50% 0;
+  background-repeat:no-repeat;
+  text-align: center;
+  min-height: 350px;
+  max-height: 425px;
+}
+
+#formh3 {
+  color: black;
+  padding-top: 1em;
+}
+
+#formp {
+  color: black;
+  padding: 0 5px;
+}
+
+#inputArea ul {
+  height: 41%;
+  padding: 0 0 68px 0;
+}
+
+#inputArea li{
+  padding: 5px;
+  height:15%;
+}
+
+#inputArea li input{
+  border: none;
+  background: rgb(255, 255, 255, 0.8);
+  border-radius: 2px;
+  padding-left: 3px;
+  padding:5px;
+  /*width:300px;*/
+  width: 45%;
+  height:20px;
+}
+
+textarea{
+  border: none;
+  background: rgb(255, 255, 255, 0.8);
+  border-radius: 2px;
+  padding-left: 3px;
+  /*width: 305px;*/
+  width: 45%;
+}
+
+#submitId{
+  width:300px;
+  margin-top:10px;
+  padding: 10px;
+  background-color:black;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  border-style: solid;
+  border-color: black;
+  border-radius: 6px;
+}
+
 footer {
   text-align: center;
   background-color: #FBFBF8;
