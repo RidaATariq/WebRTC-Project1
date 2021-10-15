@@ -12,11 +12,19 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 /* Begin site styles below */
 
 html {
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 30px;
   line-height: 25px;
   padding: 19px;
   background: grey;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
 }
 
 #header {
@@ -26,7 +34,7 @@ html {
   align-items: baseline;
 }
 
-.access {
+.streaming {
   position: absolute;
   left: -10000px;
 }
@@ -34,8 +42,6 @@ html {
 #button {
   font-family: inherit;
   font-size: inherit;
-  font-weight: bold;
-  border: 0;
   line-height: 1;
   padding: 15px;
 }
@@ -45,23 +51,24 @@ html {
   color: #fff;
   text-transform: uppercase;
   background: black;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
 }
 
-.leave {
+/*.leave {
   color: #fff;
   text-transform: uppercase;
   background: #D03D56;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
 }
+*/
 
 #call {
   flex: 0 0 auto;
@@ -76,11 +83,11 @@ video {
 }
 
 #self {
-  width: 50%;
+  width: 40%;
   border: 5px solid black;
 }
 #peer {
-  width: 75%;
+  width: 60%;
   border: 5px solid black;
 }
 
@@ -88,4 +95,15 @@ video {
   height: 50px;
   width: 50px;
   display: flex;
+}
+
+footer {
+  text-align: center;
+  background-color: #FBFBF8;
+  position: fixed;
+  font-size: small;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
 }
