@@ -9,7 +9,7 @@ const $peer = {
   connection: new RTCPeerConnection($self.rtcConfig)
 };
 
-// requestUserMedia($self.constraints);
+requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
   const video = document.querySelector('#self')
@@ -20,8 +20,10 @@ async function requestUserMedia(constraints) {
 /**
 * Socket Server Events and Callbacks
 */
+//const namespace = window.location.hash.substr(1);
 const button = document.querySelector('#call');
 const sc = io( { autoConnect: false} );
+//const sc = io(`/${namespace}`, { autoConnect: false} );
 button.addEventListener('click', function(){
   sc.open();
 });
