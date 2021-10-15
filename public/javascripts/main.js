@@ -14,7 +14,7 @@ const $peer = {
 };
 
 /* set up a stream by grabbing self and peer*/
-requestUserMedia($self.constraints);
+// requestUserMedia($self.constraints);
 
 //requests media usage from user in pop up
 async function requestUserMedia(constraints) {
@@ -28,17 +28,21 @@ async function requestUserMedia(constraints) {
 */
 
 //namespace to use hash in window
-//const namespace = window.location.hash.substr(1);
+const namespace = window.location.hash.substr(1);
 
 const button = document.querySelector('#call');
 
 //pass in namespace for particular hash
-const sc = io( { autoConnect: false} );
-//const sc = io(`/${namespace}`, { autoConnect: false} );
+//const sc = io( { autoConnect: false} );
+const sc = io(`/${namespace}`, { autoConnect: false} );
 
 button.addEventListener('click', function(){
   sc.open();
 });
 sc.on('connect', function() {
   console.log('Socket.io instance connected');
+});
+
+sc.on('connected peer', function(){
+  console.log('A peer connected!');
 });
