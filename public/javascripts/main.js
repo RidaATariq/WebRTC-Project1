@@ -14,7 +14,7 @@ const $peer = {
 };
 
 /* set up a stream by grabbing self and peer*/
-// requestUserMedia($self.constraints);
+requestUserMedia($self.constraints);
 
 //requests media usage from user in pop up
 async function requestUserMedia(constraints) {
@@ -38,14 +38,42 @@ const sc = io(`/${namespace}`, { autoConnect: false} );
 
 button.addEventListener('click', joinCall);
 
-/* DOM */
+/* DOM Events*/
 function joinCall(){
   console.log("Join Call button pressed");
   sc.open();
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
 }
 
 function leaveCall(){
   sc.close();
+}
+
+/* WebRTC Events */
+
+function establishCallFeatures(peer){
+  peer.connection
+      .addTrack($self.stream.getTracks()[0],
+        $self.stream);
+}
+
+function registerRtcEvents(peer){
+  peer.connection
+    .onnegotiationneeded = handleRtcNegotiation;
+  peer.connection
+    .onicecandidate = handleIceCandidate;
+  peer.connection.ontrack = handleRtcTrack;
+}
+
+function handleRtcNegotiation(){
+  console.log('RTC negotiation needed...');
+}
+function handleIceCandidate(){
+  //console.log();
+}
+function handleRtcTrack(){
+
 }
 
 function registerScEvents() {
