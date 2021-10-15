@@ -18,4 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+io.on('connection',function(socket){
+  console.log('Got a connection on socket.io server');
+})
+
+
 module.exports = { app, io };
