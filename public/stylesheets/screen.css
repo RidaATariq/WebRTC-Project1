@@ -63,7 +63,7 @@ html {
   transition: all 0.4s ease 0s;
 }
 
-#call-button {
+#call {
   flex: 0 0 auto;
   box-sizing: border-box;
   width: 125px;

@@ -9,7 +9,7 @@ const $peer = {
   connection: new RTCPeerConnection($self.rtcConfig)
 };
 
-requestUserMedia($self.constraints);
+// requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
   const video = document.querySelector('#self')
@@ -20,8 +20,11 @@ async function requestUserMedia(constraints) {
 /**
 * Socket Server Events and Callbacks
 */
-
-const sc = io();
+const button = document.querySelector('#call');
+const sc = io( { autoConnect: false} );
+button.addEventListener('click', function(){
+  sc.open();
+});
 sc.on('connect', function() {
   console.log('Socket.io instance connected');
 });
