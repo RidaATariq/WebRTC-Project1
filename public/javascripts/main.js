@@ -22,9 +22,10 @@ requestUserMedia($self.constraints);
 
 //requests media usage from user in pop up
 async function requestUserMedia(constraints) {
-  const video = document.querySelector('#self')
+  //const video = document.querySelector('#self')
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
-  video.srcObject = $self.stream;
+  //video.srcObject = $self.stream;
+  displayStream('#self', $self.stream);
 }
 
 /**
@@ -34,26 +35,47 @@ async function requestUserMedia(constraints) {
 //namespace to use hash in window
 const namespace = prepareNamespace(window.location.hash, true);
 
-const button = document.querySelector('#call');
+const button = document.querySelector('#call-button');
 
 //pass in namespace for particular hash
 //const sc = io( { autoConnect: false} );
 const sc = io(`/${namespace}`, { autoConnect: false} );
 
-button.addEventListener('click', joinCall);
+button.addEventListener('click', handleButtonFn);
 
 document.querySelector('#header h1')
    .innerText = `Welcome to TA Virtual Office Room #${namespace}`;
 
+/* DOM media events (grab self and peer)*/
+function displayStream( selector, stream ) {
+ const video = document.querySelector(selector);
+ video.srcObject = stream;
+}
+
 /* DOM Events*/
-function joinCall(){
+function handleButtonFn(e) {
+  console.log("Join Call button pressed");
+  const button = e.target;
+  if (button.className === 'join') {
+    button.className = 'leave';
+    button.innerText = 'Leave Room';
+    JoinRoom();
+  } else {
+    button.className = 'join';
+    button.innerText = 'Join Room';
+    LeaveRoom();
+  }
+} //end handleButtonFn
+
+function JoinRoom(){
   console.log("Join Call button pressed");
   sc.open();
   registerRtcEvents($peer);
   establishCallFeatures($peer);
 }
 
-function leaveCall(){
+function LeaveRoom(){
+
   sc.close();
 }
 
@@ -84,7 +106,10 @@ function handleIceCandidate({ candidate }) {
   console.log("handleIceCandidate Event");
   sc.emit('signal', { candidate: candidate });
 } //end candidate
-function handleRtcTrack(){
+
+function handleRtcTrack({ track, streams: [stream] }) {
+  //send incoming track to peer
+  displayStream('#peer', stream);
 }
 
 function registerScEvents() {
@@ -107,6 +132,11 @@ function handleScConnectedPeer() {
 
 function handleScDisconnectedPeer() {
   console.log('A peer Diconnected! Event occurred');
+  displayStream('#peer',null); //To remove the frozen image when call ends.
+  $peer.connection.close();
+  $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
 }
 
 async function handleScSignal({ description, candidate }) {
