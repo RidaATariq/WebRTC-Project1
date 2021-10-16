@@ -23,6 +23,11 @@ h1 {
   font-size: 40px;
 }
 
+h2 {
+  font-family: 'cursive', serif;
+  font-size: 35px;
+}
+
 h3 {
   font-size: 30px;
 }
@@ -50,7 +55,7 @@ h3 {
 .join {
   color: #fff;
   text-transform: uppercase;
-  background: black;
+  background: green;
   padding: 12px;
   border-radius: 8px;
   display: inline-block;
@@ -58,19 +63,18 @@ h3 {
   transition: all 0.4s ease 0s;
 }
 
-/*.leave {
-  color: #fff;
+.leave {
+  color: #eee;
   text-transform: uppercase;
-  background: #D03D56;
+  background: maroon;
   padding: 12px;
   border-radius: 8px;
   display: inline-block;
   border: none;
   transition: all 0.4s ease 0s;
 }
-*/
 
-#call {
+#call-button {
   flex: 0 0 auto;
   box-sizing: border-box;
   width: 125px;
@@ -83,11 +87,11 @@ video {
 }
 
 #self {
-  width: 40%;
+  width: 30%;
   border: 5px solid black;
 }
 #peer {
-  width: 60%;
+  width: 50%;
   border: 5px solid black;
 }
 
