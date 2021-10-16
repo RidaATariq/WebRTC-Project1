@@ -19,11 +19,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 const namespaces = io.of(/^\/[0-9]{6}$/);
-
 namespaces.on('connection',function(socket){
-//  console.log('Got a connection on namespace',socket.nsp);
+  //  console.log('Got a connection on namespace',socket.nsp);
   const namespace = socket.nsp;
   socket.broadcast.emit('connected peer');
+
+  //console.log("Ready to connect on namespace, await x2");
 
   // listen for signals
   socket.on('signal', function(signal){
@@ -36,6 +37,5 @@ namespaces.on('connection',function(socket){
   })
 
 })
-
 
 module.exports = { app, io };

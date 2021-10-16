@@ -4,7 +4,11 @@
 //initially starts by setting audio to off and video to on
 const $self = {
   rtcConfig: null,
-  constraints: {audio:false, video: true }
+  isPolite: false,
+  isMakingOffer: false,
+  isIgnoringOffer: false,
+  isSettingRemoteAnswerPending: false,
+  constraints: { audio: false, video: true }
 };
 
 //peer object is used as person two in syscal
@@ -66,12 +70,18 @@ function registerRtcEvents(peer){
   peer.connection.ontrack = handleRtcTrack;
 }
 
-function handleRtcNegotiation(){
+async function handleRtcNegotiation(){
   console.log('RTC negotiation needed...');
+  // SDP description send and then set to make an offer false
+  $self.isMakingOffer = true;
+  await $peer.connection.setLocalDescription();
+  sc.emit('signal', { description: $peer.connection.localDescription});
+  $self.isMakingOffer = false;
 }
-function handleIceCandidate(){
-  //console.log();
-}
+function handleIceCandidate({ candidate }) {
+  console.log("handleIceCandidate Event");
+  sc.emit('signal', { candidate: candidate });
+} //end candidate
 function handleRtcTrack(){
 
 }
@@ -91,16 +101,21 @@ console.log('Successfully connected to the signaling channel!');
 
 function handleScConnectedPeer() {
   console.log('A peer connected! Event occurred');
+  $self.isPolite = true;
 }
 
 function handleScDisconnectedPeer() {
   console.log('A peer Diconnected! Event occurred');
 }
 
-async function handleScSignal() {
+async function handleScSignal({ description, candidate }) {
   console.log('A signal event occurred!');
+  if (description){
+  console.log('SDP Signal Received:', description);
+} else if (candidate) {
+  console.log('ICE Candidate Received:', candidate);
+ }
 }
-
 /**
 * Utility Functions
 */
