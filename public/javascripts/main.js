@@ -55,7 +55,6 @@ function leaveCall(){
 }
 
 /* WebRTC Events */
-
 function establishCallFeatures(peer){
   peer.connection
       .addTrack($self.stream.getTracks()[0],
@@ -83,7 +82,6 @@ function handleIceCandidate({ candidate }) {
   sc.emit('signal', { candidate: candidate });
 } //end candidate
 function handleRtcTrack(){
-
 }
 
 function registerScEvents() {
@@ -111,9 +109,39 @@ function handleScDisconnectedPeer() {
 async function handleScSignal({ description, candidate }) {
   console.log('A signal event occurred!');
   if (description){
-  console.log('SDP Signal Received:', description);
+    console.log('SDP Signal Received:', description);
+
+    const readyForOffer = !$self.isMakingOffer &&
+      ($peer.connection.signalingState === 'stable' || $self.isSettingRemoteAnswerPending);
+
+    const offerCollision = description.type === 'offer' && !readyForOffer;
+    $self.isIgnoringOffer = !$self.isPolite  && offerCollision;
+
+    if ($self.isIgnoringOffer) {
+      return;
+    }
+
+    $self.isSettingRemoteAnswerPending = description.type === 'answer';
+    await $peer.connection.setRemoteDescription(description);
+    $self.isSettingRemoteAnswerPending = false;
+
+    if (description.type === 'offer') {
+      await $peer.connection.setLocalDescription();
+      sc.emit('signal', { description: $peer.connection.localDescription });
+    }
+
 } else if (candidate) {
-  console.log('ICE Candidate Received:', candidate);
+    console.log('ICE Candidate Received:', candidate);
+
+    // This try & catch block is used for old browsers that don't know
+     //what to do if they receive an ICE candidate.
+    try {
+      await $peer.connection.addIceCandidate(candidate);
+    } catch(e) {
+      if (!$self.isIgnoringOffer) {
+        console.error("Cannot add ICE candidate to peer");
+      }
+    } //end of catch
  }
 }
 /**
