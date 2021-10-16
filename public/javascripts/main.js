@@ -42,6 +42,9 @@ const sc = io(`/${namespace}`, { autoConnect: false} );
 
 button.addEventListener('click', joinCall);
 
+document.querySelector('#header h1')
+   .innerText = `Welcome to TA Virtual Office Room #${namespace}`;
+
 /* DOM Events*/
 function joinCall(){
   console.log("Join Call button pressed");
